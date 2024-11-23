@@ -33,7 +33,7 @@ app.post('/addSchool', async (req, res) => {
 
         // Insert into the database
         const [data] = await pool.query(
-            `INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)`,
+            `INSERT INTO schools(name, address, latitude, longitude) VALUES (?, ?, ?, ?)`,
             [name, address, latitude, longitude]
         );
 
@@ -44,6 +44,7 @@ app.post('/addSchool', async (req, res) => {
         res.status(500).json({ success: false, message: 'An error occurred', error: error.message });
     }
 });
+
 
 // Route to list all schools, sorted by proximity
 app.get('/listSchools', async (req, res) => {
